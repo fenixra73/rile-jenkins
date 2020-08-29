@@ -8,7 +8,7 @@ jenkins_port: "8080"
 # The port that Jenkins will listen on for secured (HTTPS) requests. Define to -1 to
 # disable HTTPS. Enabling this option requires a SSL certificate (see below).
 jenkins_port_https: "-1"
-jenkins_home: /data/jenkins  # The directory on the server where the Jenkins configs live
+jenkins_home: /var/lib/jenkins  # The directory on the server where the Jenkins configs live
 jenkins_admin: "fenixra73@gmail.com"  # The administrator email address for the server
 
 # If you need to override any java options then do that here.
@@ -21,7 +21,6 @@ jenkins_config_group: "jenkins"
 # The locations of the configuration files for jenkins
 jenkins_source_dir_configs: "{{ playbook_dir }}/roles/ansible-jenkins/jenkins-configs"
 jenkins_source_dir_jobs: "{{ jenkins_source_dir_configs }}/roles/ansible-jenkins/jobs"
-jenkins_source_dir_nodes: "{{ jenkins_source_dir_configs }}/roles/ansible-jenkins/nodes"
 
 # When defined, include this task file after configuring jobs. This happens
 # at the very end of the role, but before Jenkins is taken out of quiet mode.
@@ -42,9 +41,7 @@ jenkins_source_secrets: "{{ jenkins_source_dir_configs }}/secrets/"
 jenkins_jobs: 
   - pipeline1
 
-# The names of the jobs (config.xml must exist under jenkins_source_dir_nodes/node_name/)
-jenkins_nodes: 
-  - slave_name
+
 
 # List of plugins to install in the Jenkins instance
 jenkins_plugins:

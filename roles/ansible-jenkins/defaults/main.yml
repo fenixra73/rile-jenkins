@@ -1,5 +1,6 @@
 ---
-jenkins_version: "2.73.1"  # The exact version of jenkins to deploy
+#jenkins_version: "2.73.1"  # The exact version of jenkins to deploy
+jenkins_version: "2.254"
 
 jenkins_hostname: "127.0.0.1"  # The hostname that Jenkins will be accessible on
 # The port that Jenkins will listen on for unsecured (HTTP) requests. Define to -1 to
@@ -8,15 +9,18 @@ jenkins_port: "8080"
 # The port that Jenkins will listen on for secured (HTTPS) requests. Define to -1 to
 # disable HTTPS. Enabling this option requires a SSL certificate (see below).
 jenkins_port_https: "-1"
-jenkins_home: /data/jenkins  # The directory on the server where the Jenkins configs live
-jenkins_admin: "admin@example.com"  # The administrator email address for the server
+#jenkins_home: /data/jenkins  # The directory on the server where the Jenkins configs live
+jenkins_home: /var/lib/jenkins
+jenkins_admin: "fenixra73@gmail.com"  # The administrator email address for the server
 
 # If you need to override any java options then do that here.
 jenkins_java_opts: "-Djenkins.install.runSetupWizard=false"
 
 # Configuration files owner and group
-jenkins_config_owner: "ubuntu"
-jenkins_config_group: "ubuntu"
+jenkins_config_owner: "jenkins"
+jenkins_config_group: "jenkins"
+
+jenkins_install_via: "apt"
 
 # The locations of the configuration files for jenkins
 jenkins_source_dir_configs: "{{ playbook_dir }}/jenkins-configs"

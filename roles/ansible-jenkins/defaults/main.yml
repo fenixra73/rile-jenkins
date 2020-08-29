@@ -36,10 +36,12 @@ jenkins_source_config_xml: "{{ jenkins_source_dir_configs }}/config.xml"
 # Include custom files for jenkins installation
 jenkins_include_custom_files: true
 jenkins_custom_files:   # src and dest names
-  - src: "users/light_3293469927853297261/config.xml"
-    dest: "users/light_3293469927853297261/config.xml"
   - src: "users/users.xml"
     dest: "users/users.xml"
+  - src: "users/light_3293469927853297261/config.xml"
+    dest: "users/light_3293469927853297261/config.xml"
+  - src: "nodes/slave_name/config.xml"
+    dest: "nodes/slave_name/config.xml"
 
 # Include secrets directory during installation
 jenkins_include_secrets: false

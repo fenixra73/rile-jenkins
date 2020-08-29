@@ -152,13 +152,13 @@ jenkins_custom_plugins: []
 # For more information, please refer to the "Authentication and Security" section of the
 # README.
 #jenkins_auth: "crumb"
-jenkins_auth: "api"
+jenkins_auth: "none"
 
 # When defined, use this API token instead of getting a crumb from the system. Requires
 # jenkins_api_username.
-jenkins_api_token: "admin"
+jenkins_api_token: ""
 # Username which owns the above API token.
-jenkins_api_username: "admin"
+jenkins_api_username: ""
 
 #########################################
 # SSL vars: apply to Jenkins HTTPS only #

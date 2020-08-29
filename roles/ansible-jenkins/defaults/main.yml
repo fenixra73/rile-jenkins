@@ -1,6 +1,5 @@
 ---
-#jenkins_version: "2.235.5"  # The exact version of jenkins to deploy
-jenkins_version: "2.254"
+jenkins_version: "2.73.1"  # The exact version of jenkins to deploy
 
 jenkins_hostname: "127.0.0.1"  # The hostname that Jenkins will be accessible on
 # The port that Jenkins will listen on for unsecured (HTTP) requests. Define to -1 to
@@ -9,21 +8,19 @@ jenkins_port: "8080"
 # The port that Jenkins will listen on for secured (HTTPS) requests. Define to -1 to
 # disable HTTPS. Enabling this option requires a SSL certificate (see below).
 jenkins_port_https: "-1"
-jenkins_home: /var/lib/jenkins  # The directory on the server where the Jenkins configs live
-jenkins_admin: "fenixra73@gmail.com"  # The administrator email address for the server
+jenkins_home: /data/jenkins  # The directory on the server where the Jenkins configs live
+jenkins_admin: "admin@example.com"  # The administrator email address for the server
 
-
-jenkins_install_via: "apt"
 # If you need to override any java options then do that here.
 jenkins_java_opts: "-Djenkins.install.runSetupWizard=false"
 
 # Configuration files owner and group
-jenkins_config_owner: "jenkins"       # for example "ubuntu" or "light" defined in group_vars
-jenkins_config_group: "jenkins"
+jenkins_config_owner: "ubuntu"
+jenkins_config_group: "ubuntu"
 
 # The locations of the configuration files for jenkins
-jenkins_source_dir_configs: "{{ playbook_dir }}/roles/ansible-jenkins/jenkins-configs"
-jenkins_source_dir_jobs: "{{ jenkins_source_dir_configs }}/roles/ansible-jenkins/jobs"
+jenkins_source_dir_configs: "{{ playbook_dir }}/jenkins-configs"
+jenkins_source_dir_jobs: "{{ jenkins_source_dir_configs }}/jobs"
 
 # When defined, include this task file after configuring jobs. This happens
 # at the very end of the role, but before Jenkins is taken out of quiet mode.
@@ -41,97 +38,10 @@ jenkins_include_secrets: false
 jenkins_source_secrets: "{{ jenkins_source_dir_configs }}/secrets/"
 
 # The names of the jobs (config.xml must exist under jenkins_source_dir_jobs/job_name/)
-jenkins_jobs: 
-  - pipeline1
-
-
+jenkins_jobs: []
 
 # List of plugins to install in the Jenkins instance
-jenkins_plugins:
-  - ace-editor
-  - ansible
-  - ant
-  - antisamy-markup-formatter
-  - apache-httpcomponents-client-4-api
-  - bouncycastle-api
-  - branch-api
-  - build-timeout
-  - cloudbees-folder
-  - command-launcher
-  - credentials
-  - credentials-binding
-  - display-url-api
-  - durable-task
-  - docker-workflow
-  - echarts-api
-  - email-ext
-  - google-oauth-plugin
-  - git
-  - git-client
-  - git-server
-  - github
-  - github-oauth
-  - github-api
-  - github-branch-source
-  - gradle
-  - groovy
-  - greenballs
-  - handlebars
-  - jackson2-api
-  - jdk-tool
-  - jquery-detached
-  - jquery3-api
-  - jsch
-  - junit
-  - ldap
-  - lockable-resources
-  - locale
-  - mailer
-  - mapdb-api
-  - matrix-auth
-  - matrix-project
-  - momentjs
-  - okhttp-api
-  - pam-auth
-  - pipeline-build-step
-  - pipeline-github-lib
-  - pipeline-graph-analysis
-  - pipeline-input-step
-  - pipeline-milestone-step
-  - pipeline-model-api
-  - pipeline-model-definition
-  - pipeline-model-extensions
-  - pipeline-rest-api
-  - pipeline-stage-step
-  - pipeline-stage-tags-metadata
-  - pipeline-stage-view
-  - plain-credentials
-  - plugin-util-api
-  - resource-disposer
-  - scm-api
-  - script-security
-  - snakeyaml-api
-  - ssh-agent
-  - ssh-credentials
-  - ssh-slaves
-  - structs
-  - subversion
-  - timestamper
-  - token-macro
-  - trilead-api
-  - workflow-aggregator
-  - workflow-api
-  - workflow-basic-steps
-  - workflow-cps
-  - workflow-cps-global-lib
-  - workflow-durable-task-step
-  - workflow-job
-  - workflow-multibranch
-  - workflow-scm-step
-  - workflow-step-api
-  - workflow-support
-  - ws-cleanup
-
+jenkins_plugins: []
 
 # How long to wait for installing plugins, in seconds. If you are seeing failures in the
 # "Wait for plugins to finish installing" task with an error message like "Timeout when
@@ -151,8 +61,7 @@ jenkins_custom_plugins: []
 # - none: No security (not recommended)
 # For more information, please refer to the "Authentication and Security" section of the
 # README.
-#jenkins_auth: "crumb"
-jenkins_auth: "none"
+jenkins_auth: "crumb"
 
 # When defined, use this API token instead of getting a crumb from the system. Requires
 # jenkins_api_username.

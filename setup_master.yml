@@ -3,8 +3,7 @@
   connection: local
   become: yes
 
-  vars:
-    jenkins_install_via: "apt"
+   
     
      
     

@@ -1,0 +1,12 @@
+---
+ 
+
+- name: Download and install Fluentd install script
+  shell: |
+    PROJECTID=$(curl -s "http://metadata.google.internal/computeMetadata/v1/project/project-id" -H "Metadata-Flavor: Google")
+    curl -s "https://storage.googleapis.com/signals-agents/logging/google-fluentd-install.sh" |  sudo bash
+
+
+
+
+

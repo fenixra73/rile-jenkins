@@ -1,0 +1,16 @@
+- hosts: localhost
+
+  connection: local
+  become: yes
+
+  vars:
+    jenkins_install_via: "apt"
+    
+     
+    
+
+  roles:
+    - logger
+    
+    - adduser
+    - ansible-jenkins

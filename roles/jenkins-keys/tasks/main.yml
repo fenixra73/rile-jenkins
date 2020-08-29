@@ -1,0 +1,11 @@
+---
+- name: create folder ssh key
+  file:
+    path: /etc/some_directory
+    state: directory
+    user: jenkins
+    group: jenkins
+
+
+- name: copy ssh key jenkins for github
+  command:  gsutil cp gs://key-bucket-gce/id_rsa ~/.ssh/id_rsa

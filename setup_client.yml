@@ -1,0 +1,9 @@
+- name: Provisioning localhost
+  hosts: localhost
+  connection: local
+  become: yes
+
+  roles:
+    - logger
+    #- docker
+    - adduser
